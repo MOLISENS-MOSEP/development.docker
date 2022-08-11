@@ -1,0 +1,33 @@
+ARG ROS_DISTRO
+FROM ros:$ROS_DISTRO
+
+SHELL ["/bin/bash", "-o", "pipefail", "-c"]
+    
+RUN apt-get update && \
+    echo 'Etc/UTC' | tee /etc/timezone && \
+    ln -s -f /usr/share/zoneinfo/Etc/UTC /etc/localtime && \
+    DEBIAN_FRONTEND=noninteractive apt-get install -y \
+        sudo \
+        locales \
+        tzdata \
+        gconf2 \
+        language-pack-en \
+        keyboard-configuration \
+  && rm -rf /var/lib/apt/lists/*
+
+# Configure environment
+RUN update-locale LANG=en_US.UTF-8 LC_MESSAGES=POSIX
+RUN locale-gen en_US.UTF-8; dpkg-reconfigure -f noninteractive locales
+ENV LANG en_US.UTF-8
+ENV LANGUAGE en_US.UTF-8
+ENV LC_ALL en_US.UTF-8
+RUN echo 'ALL ALL=(ALL) NOPASSWD:ALL' >> /etc/sudoers
+
+ENV PULSE_SERVER /run/pulse/native
+
+# Configure terminal colors
+RUN gconftool-2 --set "/apps/gnome-terminal/profiles/Default/use_theme_background" --type bool false && \
+    gconftool-2 --set "/apps/gnome-terminal/profiles/Default/use_theme_colors" --type bool false && \
+    gconftool-2 --set "/apps/gnome-terminal/profiles/Default/background_color" --type string "#000000"
+
+

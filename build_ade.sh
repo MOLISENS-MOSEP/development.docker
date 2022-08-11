@@ -5,7 +5,7 @@ set -e
 # Default settings
 ROS_DISTRO="galactic"
 IMAGE_NAME="registry-gitlab.v2c2.at/molisens/development/docker/$ROS_DISTRO"
-PLATFORM="ade"
+PLATFORM=$(uname -i)
 TAG_VERSION="0.1"
 
 ##### Base ################################################

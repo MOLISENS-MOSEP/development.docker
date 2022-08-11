@@ -16,20 +16,10 @@ RUN bash -c 'git config --global credential.helper cache'
 #    mkdir /molisens-src/src && cd /molisens-src/src && git pull origin main && vcs import < ../repos/molisens.repos && vcs pull ; cd /molisens-src && \
 #    colcon build --merge-install --install-base /opt/molisens --cmake-args -DCMAKE_BUILD_TYPE=Release --catkin-skip-building-tests; \
 #    rm -rf /molisens-src; '
-    
-#ADD "https://gitlab.com/nvidia/container-images/vulkan/raw/master/nvidia_icd.json" /etc/vulkan/icd.d/nvidia_icd.json
-#RUN chmod 644 /etc/vulkan/icd.d/nvidia_icd.json
-#ADD "https://gitlab.com/nvidia/container-images/opengl/raw/ubuntu20.04/glvnd/runtime/10_nvidia.json" /etc/glvnd/egl_vendor.d/10_nvidia.json
-#RUN chmod 644 /etc/glvnd/egl_vendor.d/10_nvidia.json
-
-# Need to update an expired key (otherwise "sudo apt-get update" won't work)
-#RUN curl http://repo.ros2.org/repos.key | sudo apt-key add -
 
 
-
-# Note: need "docker/x86/" because we are in the "~/ros2/vifware_ws" directory
-COPY ade/env.sh /etc/profile.d/ade_env.sh
-COPY ade/entrypoint /ade_entrypoint
+COPY x86_64/env.sh /etc/profile.d/ade_env.sh
+COPY x86_64/entrypoint /ade_entrypoint
 
 # ADE entry config
 ENTRYPOINT ["/ade_entrypoint"]
