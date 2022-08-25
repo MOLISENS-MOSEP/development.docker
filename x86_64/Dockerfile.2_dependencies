@@ -93,7 +93,8 @@ RUN apt-get update && apt-get install -y \
     ros-$ROS_DISTRO-serial-driver \
     ros-$ROS_DISTRO-gps-msgs \
     ros-$ROS_DISTRO-nmea-msgs \ 
-    ros-$ROS_DISTRO-ros-testing  
+    ros-$ROS_DISTRO-ros-testing \
+    ros-$ROS_DISTRO-rosbag2-storage-mcap
 
 
 RUN apt-get install -y \
