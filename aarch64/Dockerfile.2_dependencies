@@ -120,8 +120,11 @@ RUN apt-get install -y \
     python3-rtree
 
 # Add GTSAM-PPA for LIO_SAM
-RUN apt-get update \
-    add-apt-repository ppa:borglab/gtsam-release-4.0 \
-    apt install libgtsam-dev libgtsam-unstable-dev
+RUN wget -O /tmp/gtsam.zip https://github.com/borglab/gtsam/archive/4.1.1.zip  && \
+    cd /tmp/ && unzip gtsam.zip -d /tmp/  && \
+    cd /tmp/gtsam-4.1.1/  && \
+    mkdir build && cd build  && \
+    cmake -DGTSAM_BUILD_WITH_MARCH_NATIVE=OFF -DGTSAM_USE_SYSTEM_EIGEN=ON  ..  && \
+    sudo make install -j8
 
 RUN pip3 install pyserial
