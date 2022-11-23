@@ -94,7 +94,10 @@ RUN apt-get update && apt-get install -y \
     ros-$ROS_DISTRO-gps-msgs \
     ros-$ROS_DISTRO-nmea-msgs \
     ros-$ROS_DISTRO-ros-testing \
-    ros-$ROS_DISTRO-rosbag2-storage-mcap
+    ros-$ROS_DISTRO-rosbag2-storage-mcap \
+    ros-$ROS_DISTRO-perception-pcl \
+    ros-$ROS_DISTRO-pcl-msgs \
+    ros-$ROS_DISTRO-vision-opencv
 
 
 RUN apt-get install -y \
@@ -116,7 +119,7 @@ RUN apt-get install -y \
 
 
 # Add GTSAM-PPA for LIO_SAM
-RUN apt-get update && apt-get install -y \
+RUN apt-get update \
     add-apt-repository ppa:borglab/gtsam-release-4.0 \
     apt install libgtsam-dev libgtsam-unstable-dev
 
