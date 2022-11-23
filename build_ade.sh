@@ -4,9 +4,13 @@ set -e
 
 # Default settings
 ROS_DISTRO="humble"
-IMAGE_NAME="registry-gitlab.v2c2.at/molisens/development/docker/$ROS_DISTRO"
-PLATFORM=$(uname -i)
-TAG_VERSION="0.2"
+IMAGE_NAME="registry-gitlab.v2c2.at/molisens/development/docker/$ROS_DISTRO"TAG_VERSION="0.2"
+
+PLATFORM=$(uname -m)
+if  [[ $PLATFORM == arm64 ]]; then
+
+  PLATFORM=aarch64
+fi
 
 ##### Base ################################################
 TAG_PREFIX="base_"$PLATFORM
