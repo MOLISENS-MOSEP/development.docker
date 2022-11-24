@@ -80,20 +80,26 @@ RUN apt-get update && apt-get install -y \
     ros-$ROS_DISTRO-geographic-msgs \
     ros-$ROS_DISTRO-rosbridge-server\
     ros-$ROS_DISTRO-diagnostic-aggregator \
-    ros-$ROS_DISTRO-osrf-testing-tools-cpp \    
+    ros-$ROS_DISTRO-osrf-testing-tools-cpp \
     ros-$ROS_DISTRO-filters \
-    ros-$ROS_DISTRO-rviz2 \    
+    ros-$ROS_DISTRO-rviz2 \
     ros-$ROS_DISTRO-rviz-common \
-    ros-$ROS_DISTRO-rviz-default-plugins \    
-    ros-$ROS_DISTRO-rqt-robot-monitor \  
-    ros-$ROS_DISTRO-apex-test-tools \    
-    ros-$ROS_DISTRO-joy \         
-    ros-$ROS_DISTRO-ublox-gps \ 
-    ros-$ROS_DISTRO-usb-cam \    
+    ros-$ROS_DISTRO-rviz-default-plugins \
+    ros-$ROS_DISTRO-rqt-robot-monitor \
+    ros-$ROS_DISTRO-apex-test-tools \
+    ros-$ROS_DISTRO-joy \
+    ros-$ROS_DISTRO-ublox-gps \
+    ros-$ROS_DISTRO-usb-cam \
     ros-$ROS_DISTRO-serial-driver \
     ros-$ROS_DISTRO-gps-msgs \
-    ros-$ROS_DISTRO-nmea-msgs \ 
-    ros-$ROS_DISTRO-ros-testing  
+    ros-$ROS_DISTRO-nmea-msgs \
+    ros-$ROS_DISTRO-ros-testing \
+    ros-$ROS_DISTRO-rosbag2-storage-mcap \
+    ros-$ROS_DISTRO-perception-pcl \
+    ros-$ROS_DISTRO-pcl-msgs \
+    ros-$ROS_DISTRO-vision-opencv
+
+
 
 
 RUN apt-get install -y \
@@ -111,5 +117,14 @@ RUN apt-get install -y \
     python3-opencv \
     python3-tornado \
     python3-pandas \
-    python3-rtree \
-    
+    python3-rtree
+
+# Add GTSAM-PPA for LIO_SAM
+RUN wget -O /tmp/gtsam.zip https://github.com/borglab/gtsam/archive/4.1.1.zip  && \
+    cd /tmp/ && unzip gtsam.zip -d /tmp/  && \
+    cd /tmp/gtsam-4.1.1/  && \
+    mkdir build && cd build  && \
+    cmake -DGTSAM_BUILD_WITH_MARCH_NATIVE=OFF -DGTSAM_USE_SYSTEM_EIGEN=ON  ..  && \
+    sudo make install -j8
+
+RUN pip3 install pyserial
