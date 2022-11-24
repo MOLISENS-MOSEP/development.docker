@@ -25,7 +25,7 @@
     TIME_FROM_PTP_1588,
     TIME_FROM_ROS_TIME
     }"/>
-  <arg name="metadata" default="/catkin_ws/src/ouster_lidar/os1.yaml" doc="path to write metadata file when receiving sensor data"/>
+  <arg name="metadata" default="/catkin_ws/src/ouster-lidar/os1.yaml" doc="path to write metadata file when receiving sensor data"/>
 
 
   <arg name="tf_prefix" default="lidar_top" doc="namespace for tf transforms"/>
