@@ -1,0 +1,21 @@
+topics:
+
+  - {topic: "/tf", type: "tf2_msgs/msg/TFMessage", queue_size: 10}
+  - {topic: "/tf_static", type: "tf2_msgs/msg/TFMessage", queue_size: 10}
+  - {topic: "/devbot/odom", type: "nav_msgs/msg/Odometry", queue_size: 1}
+  - {topic: "/devbot/pose", type: "geometry_msgs/msg/PoseStamped", queue_size: 1}
+  - {topic: "/devbot/twist", type: "geometry_msgs/msg/TwistStamped", queue_size: 1}  
+  - {topic: "/gps_local/odom", type: "nav_msgs/msg/Odometry", queue_size: 1}
+  - {topic: "/localization/pose_estimator/odom", type: "nav_msgs/msg/Odometry", queue_size: 1}
+  - {topic: "/localization/pose_twist_fusion_filter/odom", type: "nav_msgs/msg/Odometry", queue_size: 1}  
+  - {topic: "/devbot/gps/fix", type: "sensor_msgs/msg/NavSatFix", queue_size: 1}   
+  
+  
+  
+  
+   
+    
+    
+    
+    
+

@@ -11,5 +11,5 @@ docker build \
     --file Dockerfile .
 
 
-docker push registry-gitlab.v2c2.at/molisens/development/docker/ouster_ros1:$PLATFORM
+#docker push registry-gitlab.v2c2.at/molisens/development/docker/ouster_ros1:$PLATFORM
 

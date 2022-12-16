@@ -3,4 +3,5 @@ topics:
   - {topic: "/tf", type: "tf2_msgs/msg/TFMessage", queue_size: 10}
   - {topic: "/tf_static", type: "tf2_msgs/msg/TFMessage", queue_size: 10}
   - {topic: "/lidar/top/points", type: "sensor_msgs/msg/PointCloud2", queue_size: 1}
-
+  - {topic: "/lidar_top/lidar_packets", type: "ouster_ros/msg/PacketMsg", queue_size: 1}
+  - {topic: "/lidar_top/imu_packets", type: "ouster_ros/msg/PacketMsg", queue_size: 1}  
