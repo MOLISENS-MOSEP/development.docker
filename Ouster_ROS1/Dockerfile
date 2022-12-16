@@ -38,7 +38,7 @@ RUN bash -c ' source /opt/ros/noetic/setup.bash; \
 
 
 
-RUN bash -c ' rm -r opt/ros/galactic/share/ros1_bridge;  '
+#RUN bash -c ' rm -r opt/ros/galactic/share/ros1_bridge;  '
 
 #RUN bash -c ' source /opt/ros/noetic/setup.bash; \
 #              source /opt/ros/galactic/setup.bash;  \
