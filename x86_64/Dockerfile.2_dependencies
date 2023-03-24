@@ -126,8 +126,8 @@ RUN pip3 install pyserial
 # Fixes black screen in rviz2. Can be removed once fixed in Ubuntu 22.04
 # https://github.com/ros2/rviz/issues/948
 
-RUN apt update \
-    apt-get install software-properties-common -y \
-    add-apt-repository -y ppa:kisak/kisak-mesa \
-    apt update \
-    apt upgrade -y
+RUN apt-get update && \
+    apt-get install software-properties-common -y && \
+    add-apt-repository -y ppa:kisak/kisak-mesa && \
+    apt-get update && \
+    apt-get upgrade -y
