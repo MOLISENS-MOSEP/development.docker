@@ -99,7 +99,8 @@ RUN apt-get update && apt-get install -y \
     ros-$ROS_DISTRO-rosbag2-storage-mcap \
     ros-$ROS_DISTRO-perception-pcl \
     ros-$ROS_DISTRO-pcl-msgs \
-    ros-$ROS_DISTRO-vision-opencv
+    ros-$ROS_DISTRO-vision-opencv \
+    ros-$ROS_DISTRO-foxglove-bridge
 
 
 
