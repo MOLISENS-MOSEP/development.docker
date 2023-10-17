@@ -54,7 +54,7 @@ RUN apt-get update && apt-get install -y \
     apt-transport-https \
     libcpprest-dev \
     libpcap-dev \
-    libglfw3-dev
+    libglfw3-dev \
     iputils-ping
 
 
@@ -100,8 +100,8 @@ RUN apt-get update && apt-get install -y \
     ros-$ROS_DISTRO-rosbag2-storage-mcap \
     ros-$ROS_DISTRO-perception-pcl \
     ros-$ROS_DISTRO-pcl-msgs \
-    ros-$ROS_DISTRO-vision-opencv
-
+    ros-$ROS_DISTRO-vision-opencv \
+    ros-$ROS_DISTRO-foxglove-bridge
 
 RUN apt-get install -y \
     python3-pip \
