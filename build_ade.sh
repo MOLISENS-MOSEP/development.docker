@@ -4,7 +4,7 @@ set -e
 
 # Default settings
 ROS_DISTRO="humble"
-IMAGE_NAME="registry-gitlab.v2c2.at/molisens/development/docker/$ROS_DISTRO"
+IMAGE_NAME="ghcr.io/molisens-mosep/$ROS_DISTRO"
 TAG_VERSION="0.3"
 
 PLATFORM=$(uname -m)
@@ -49,7 +49,7 @@ docker build \
 TAG_PREFIX=$PLATFORM
 
 DOCKER_BASE=$IMAGE_NAME":dependencies_"$PLATFORM
-BASE=$IMAGE_NAME"/"$PLATFORM":"$TAG_VERSION
+BASE=$IMAGE_NAME"-"$PLATFORM":"$TAG_VERSION
 
 echo -e "\tBase: $DOCKER_BASE"
 echo -e "\tImage: $BASE"
