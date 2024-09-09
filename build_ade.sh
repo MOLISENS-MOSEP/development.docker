@@ -54,9 +54,9 @@ BASE=$IMAGE_NAME"-"$PLATFORM":"$TAG_VERSION
 echo -e "\tBase: $DOCKER_BASE"
 echo -e "\tImage: $BASE"
 
-export DEPLOY_TOKEN=molisens_token:rxaXiyDwk6am8A9stXRh
+export GITHUB_TOKEN=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
 DOCKER_BUILDKIT=1 docker build \
-    --secret id=deploytoken,env=DEPLOY_TOKEN \
+    --secret id=deploytoken,env=GITHUB_TOKEN \
     --progress=plain \
     --rm \
     --network=host \
