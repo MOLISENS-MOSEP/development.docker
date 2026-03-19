@@ -1,6 +1,6 @@
 # MOLISENS/MOSEP Docker Images
 
-Docker image definitions for the MOLISENS/MOSEP ADE development environment. Builds multi-platform images (x86_64, aarch64) using a three-layer approach for efficient caching and rebuilds.
+Docker image definitions for the MOLISENS/MOSEP development environment. Builds multi-platform images (x86_64, aarch64) using a three-layer approach for efficient caching and rebuilds.
 
 ## Image Layers
 
@@ -8,11 +8,17 @@ Docker image definitions for the MOLISENS/MOSEP ADE development environment. Bui
 | ---------------- | --------------------------- | -------------------------------------------------------------- |
 | **Base**         | `Dockerfile.1_base`         | ROS 2 Humble base with locale, timezone, sudo                  |
 | **Dependencies** | `Dockerfile.2_dependencies` | System libraries, ROS packages, Python tools, build essentials |
-| **MOLISENS**     | `Dockerfile.3_molisens`     | Git config, entrypoint, ADE integration                        |
+| **MOLISENS**     | `Dockerfile.3_molisens`     | Git config, entrypoint                                         |
 
 ## Building
 
-Build all layers for the current platform:
+Set a GitHub personal access token (needed to pull private dependencies during the build):
+
+```bash
+export GITHUB_TOKEN=<your_token>
+```
+
+Then build all layers for the current platform:
 
 ```bash
 ./build.sh
@@ -28,8 +34,8 @@ ghcr.io/molisens-mosep/humble-<arch>:<version>
 
 | Platform | Directory  | Image Tag            |
 | -------- | ---------- | -------------------- |
-| x86_64   | `x86_64/`  | `humble-x86_64:0.3`  |
-| ARM64    | `aarch64/` | `humble-aarch64:0.3` |
+| x86_64   | `x86_64/`  | `humble-x86_64:0.5`  |
+| ARM64    | `aarch64/` | `humble-aarch64:0.5` |
 
 The aarch64 configuration includes device passthrough for sensors (serial ports, IMU, GPS).
 
