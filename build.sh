@@ -5,7 +5,7 @@ set -e
 # Default settings
 ROS_DISTRO="humble"
 IMAGE_NAME="ghcr.io/molisens-mosep/$ROS_DISTRO"
-TAG_VERSION="0.3"
+TAG_VERSION="0.5"
 
 PLATFORM=$(uname -m)
 if  [[ $PLATFORM == arm64 ]]; then
@@ -45,7 +45,7 @@ docker build \
     --file $PLATFORM/Dockerfile.2_dependencies .
 
 
-##### MOLISENS #############################################
+##### MOSEP #############################################
 TAG_PREFIX=$PLATFORM
 
 DOCKER_BASE=$IMAGE_NAME":dependencies_"$PLATFORM
@@ -54,7 +54,7 @@ BASE=$IMAGE_NAME"-"$PLATFORM":"$TAG_VERSION
 echo -e "\tBase: $DOCKER_BASE"
 echo -e "\tImage: $BASE"
 
-export GITHUB_TOKEN=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
+GITHUB_TOKEN="${GITHUB_TOKEN:?Set GITHUB_TOKEN env var before running this script}"
 DOCKER_BUILDKIT=1 docker build \
     --secret id=deploytoken,env=GITHUB_TOKEN \
     --progress=plain \

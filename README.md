@@ -1,21 +1,27 @@
 # MOLISENS/MOSEP Docker Images
 
-Docker image definitions for the MOLISENS/MOSEP ADE development environment. Builds multi-platform images (x86_64, aarch64) using a three-layer approach for efficient caching and rebuilds.
+Docker image definitions for the MOLISENS/MOSEP development environment. Builds multi-platform images (x86_64, aarch64) using a three-layer approach for efficient caching and rebuilds.
 
 ## Image Layers
 
-| Layer | Dockerfile | Description |
-|-------|-----------|-------------|
-| **Base** | `Dockerfile.1_base` | ROS 2 Humble base with locale, timezone, sudo |
+| Layer            | Dockerfile                  | Description                                                    |
+| ---------------- | --------------------------- | -------------------------------------------------------------- |
+| **Base**         | `Dockerfile.1_base`         | ROS 2 Humble base with locale, timezone, sudo                  |
 | **Dependencies** | `Dockerfile.2_dependencies` | System libraries, ROS packages, Python tools, build essentials |
-| **MOLISENS** | `Dockerfile.3_molisens` | Git config, entrypoint, ADE integration |
+| **MOLISENS**     | `Dockerfile.3_molisens`     | Git config, entrypoint                                         |
 
 ## Building
 
-Build all layers for the current platform:
+Set a GitHub personal access token (needed to pull private dependencies during the build):
 
 ```bash
-./build_ade.sh
+export GITHUB_TOKEN=<your_token>
+```
+
+Then build all layers for the current platform:
+
+```bash
+./build.sh
 ```
 
 The script auto-detects the platform (`x86_64` or `aarch64`) and builds all three layers sequentially. Final images are tagged as:
@@ -26,10 +32,10 @@ ghcr.io/molisens-mosep/humble-<arch>:<version>
 
 ## Platform Support
 
-| Platform | Directory | Image Tag |
-|----------|-----------|-----------|
-| x86_64 | `x86_64/` | `humble-x86_64:0.3` |
-| ARM64 | `aarch64/` | `humble-aarch64:0.3` |
+| Platform | Directory  | Image Tag            |
+| -------- | ---------- | -------------------- |
+| x86_64   | `x86_64/`  | `humble-x86_64:0.5`  |
+| ARM64    | `aarch64/` | `humble-aarch64:0.5` |
 
 The aarch64 configuration includes device passthrough for sensors (serial ports, IMU, GPS).
 
@@ -49,7 +55,7 @@ Bridges topics: `/lidar_top/points`, `/tf`, `/tf_static`.
 
 ```
 docker/
-├── build_ade.sh              # Master build script
+├── build.sh              # Master build script
 ├── x86_64/                   # x86_64 Dockerfiles + entrypoint
 │   ├── Dockerfile.1_base
 │   ├── Dockerfile.2_dependencies

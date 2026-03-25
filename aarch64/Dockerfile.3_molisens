@@ -18,11 +18,10 @@ RUN bash -c 'git config --global credential.helper cache'
 #    rm -rf /molisens-src; '
 
 
-COPY aarch64/env.sh /etc/profile.d/ade_env.sh
-COPY aarch64/entrypoint /ade_entrypoint
+COPY aarch64/env.sh /etc/profile.d/env.sh
+COPY aarch64/entrypoint /entrypoint
 
-# ADE entry config
-ENTRYPOINT ["/ade_entrypoint"]
+ENTRYPOINT ["/entrypoint"]
 CMD ["/bin/sh", "-c", "trap 'exit 147' TERM; tail -f /dev/null & while wait ${!}; [ $? -ge 128 ]; do true; done"]
 
 
