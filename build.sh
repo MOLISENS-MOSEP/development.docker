@@ -45,7 +45,7 @@ docker build \
     --file $PLATFORM/Dockerfile.2_dependencies .
 
 
-##### MOLISENS #############################################
+##### MOSEP #############################################
 TAG_PREFIX=$PLATFORM
 
 DOCKER_BASE=$IMAGE_NAME":dependencies_"$PLATFORM
