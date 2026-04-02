@@ -54,10 +54,7 @@ BASE=$IMAGE_NAME"-"$PLATFORM":"$TAG_VERSION
 echo -e "\tBase: $DOCKER_BASE"
 echo -e "\tImage: $BASE"
 
-GITHUB_TOKEN="${GITHUB_TOKEN:?Set GITHUB_TOKEN env var before running this script}"
-DOCKER_BUILDKIT=1 docker build \
-    --secret id=deploytoken,env=GITHUB_TOKEN \
-    --progress=plain \
+docker build \
     --rm \
     --network=host \
     --tag $BASE \

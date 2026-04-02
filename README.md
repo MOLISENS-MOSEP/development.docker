@@ -8,17 +8,11 @@ Docker image definitions for the MOLISENS/MOSEP development environment. Builds 
 | ---------------- | --------------------------- | -------------------------------------------------------------- |
 | **Base**         | `Dockerfile.1_base`         | ROS 2 Humble base with locale, timezone, sudo                  |
 | **Dependencies** | `Dockerfile.2_dependencies` | System libraries, ROS packages, Python tools, build essentials |
-| **MOLISENS**     | `Dockerfile.3_molisens`     | Git config, entrypoint                                         |
+| **MOSEP**        | `Dockerfile.3_molisens`     | Entrypoint and environment setup                               |
 
 ## Building
 
-Set a GitHub personal access token (needed to pull private dependencies during the build):
-
-```bash
-export GITHUB_TOKEN=<your_token>
-```
-
-Then build all layers for the current platform:
+Build all layers for the current platform:
 
 ```bash
 ./build.sh

@@ -1,4 +1,4 @@
-ARG ROS_DISTRO
+ARG ROS_DISTRO=humble
 FROM ros:$ROS_DISTRO
 
 SHELL ["/bin/bash", "-o", "pipefail", "-c"]
@@ -18,12 +18,12 @@ RUN apt-get update && \
 # Configure environment
 RUN update-locale LANG=en_US.UTF-8 LC_MESSAGES=POSIX
 RUN locale-gen en_US.UTF-8; dpkg-reconfigure -f noninteractive locales
-ENV LANG en_US.UTF-8
-ENV LANGUAGE en_US.UTF-8
-ENV LC_ALL en_US.UTF-8
+ENV LANG=en_US.UTF-8
+ENV LANGUAGE=en_US.UTF-8
+ENV LC_ALL=en_US.UTF-8
 RUN echo 'ALL ALL=(ALL) NOPASSWD:ALL' >> /etc/sudoers
 
-ENV PULSE_SERVER /run/pulse/native
+ENV PULSE_SERVER=/run/pulse/native
 
 # Configure terminal colors
 RUN gconftool-2 --set "/apps/gnome-terminal/profiles/Default/use_theme_background" --type bool false && \

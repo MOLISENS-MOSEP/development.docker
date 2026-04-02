@@ -1,22 +1,7 @@
-# syntax=docker/dockerfile:1.2
-ARG DOCKER_BASE
+ARG DOCKER_BASE=ghcr.io/molisens-mosep/humble:dependencies_aarch64
 FROM $DOCKER_BASE      
 
 SHELL ["/bin/bash", "-o", "pipefail", "-c"]
-
-
-
-# Install vifware.aap
-RUN bash -c 'git config --global credential.helper cache'
-
-#RUN --mount=type=secret,id=deploytoken bash -c 'git config --global credential.helper cache && \
-#    git clone --single-branch --branch mainhttps://$(cat /run/secrets/deploytoken)@gitlab.v2c2.at/molisens/molisens_ws.git /molisens-src; \
-#    cd /molisens-src; \
-#     source /opt/ros/$ROS_DISTRO/setup.bash; \
-#    mkdir /molisens-src/src && cd /molisens-src/src && git pull origin main && vcs import < ../repos/molisens.repos && vcs pull ; cd /molisens-src && \
-#    colcon build --merge-install --install-base /opt/molisens --cmake-args -DCMAKE_BUILD_TYPE=Release --catkin-skip-building-tests; \
-#    rm -rf /molisens-src; '
-
 
 COPY aarch64/env.sh /etc/profile.d/env.sh
 COPY aarch64/entrypoint /entrypoint

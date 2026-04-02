@@ -1,4 +1,4 @@
-ARG DOCKER_BASE
+ARG DOCKER_BASE=ghcr.io/molisens-mosep/humble:base_x86_64
 FROM $DOCKER_BASE
 
 
