@@ -54,7 +54,7 @@ RUN apt-get update && apt-get install -y \
     apt-transport-https \
     libcpprest-dev \
     libpcap-dev \
-    libglfw3-dev \
+    libglfw3-dev
 
 
 RUN apt-get update && apt-get install -y \
